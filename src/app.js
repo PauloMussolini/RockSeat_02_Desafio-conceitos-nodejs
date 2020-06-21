@@ -85,7 +85,8 @@ app.delete("/repositories/:id", (request, response) => {
       id: id
     })
   }
-  repositories[repoIndex] = {};
+  //repositories[repoIndex] = {};
+  repositories.splice(repoIndex,1);
   response.status(204).json({
     message: "Repository deleted succeed!"
   })

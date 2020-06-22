@@ -39,10 +39,15 @@ app.post("/repositories", (request, response) => {
   }
   repositories.push(repo);
 
-  return response.status(200).send({
-    message: "Repository created success!",
-    data: repo
-  })
+  // return response.status(200).send({
+  //   message: "Repository created success!",
+  //   data: repo
+  // })
+  // return response.status(200).send({
+  //   message: "Repository created success!",
+  //   data: repo
+  // })
+  return response.json(repo);
 
 });
 
@@ -67,10 +72,11 @@ app.put("/repositories/:id", (request, response) => {
   repo.url = url;
   repo.techs = techs;
 
-  return response.status(201).json({
-    message: "Repository changed success!",
-    data: repositories[repoIndex]
-  }); 
+  return response.json(repositories[repoIndex]); 
+  // return response.status(201).json({
+  //   message: "Repository changed success!",
+  //   data: repositories[repoIndex]
+  // }); 
 
 
 });
@@ -85,11 +91,13 @@ app.delete("/repositories/:id", (request, response) => {
       id: id
     })
   }
-  //repositories[repoIndex] = {};
   repositories.splice(repoIndex,1);
   response.status(204).json({
     message: "Repository deleted succeed!"
   })
+  // response.status(204).json({
+  //   message: "Repository deleted succeed!"
+  // })
 });
 
 app.post("/repositories/:id/like", (request, response) => {
@@ -104,11 +112,14 @@ app.post("/repositories/:id/like", (request, response) => {
   repositories[repoIndex].likes++;
 
   response.status(200).json({
-    message: "Like incremented succeed!",
-    data: {
       likes: repositories[repoIndex].likes
-    }
   })
+  // response.status(200).json({
+  //   message: "Like incremented succeed!",
+  //   data: {
+  //     likes: repositories[repoIndex].likes
+  //   }
+  // })
 
 });
 
